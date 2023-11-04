@@ -4,3 +4,7 @@ Things to do:
   2. Create main function
   3. Build ArrayList
   4. Use random number generator to check if the program checks if they can buy a home appropriately.
+  5. Assignments
+     Amogh: LTI
+     Ameya: DTI
+     Ary: FEDTI
