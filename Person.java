@@ -26,6 +26,16 @@ public class Person {
         this.buyHouse = false;
     }
 
+    private boolean checkDebtToIncomeRatio() {
+        float debt = carPayment + creditCardPayment + monthlyMortgagePayment;
+        float cdiRatio = (float) (debt) / monthlyIncome;
+        float mortgageDTI = (float) (monthlyMortgagePayment) / monthlyIncome;
+        if (0.28 < mortgageDTI) {
+            return false; // more than 28% of that debt is going towards servicing a mortgage
+        }
+        return cdiRatio <= 0.36;
+    }
+
     private boolean checkFrontEndDebtToIncome() {
         float fedtiRatio = (float) (monthlyMortgagePayment) / monthlyIncome;
         return fedtiRatio <= 0.28;
