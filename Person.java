@@ -10,7 +10,9 @@ public class Person {
     private int downPayment;
     private boolean buyHouse;
 
-    public Person(){}
+    public Person() {
+
+    }
     public Person(int monthlyIncome, int creditCardPayment, int carPayment, int studentLoanPayment, int appraisedValue, int downPayment, int loanAmount, int monthlyMortgagePayment, int creditScore){
         this.monthlyIncome = monthlyIncome;
         this.creditCardPayment = creditCardPayment;
@@ -21,5 +23,11 @@ public class Person {
         this.loanAmount = loanAmount;
         this.monthlyMortgagePayment = monthlyMortgagePayment;
         this.creditScore = creditScore;
+        this.buyHouse = false;
+    }
+
+    private boolean checkFrontEndDebtToIncome() {
+        float fedtiRatio = (float) (monthlyMortgagePayment) / monthlyIncome;
+        return fedtiRatio <= 0.28;
     }
 }
