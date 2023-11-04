@@ -1,1 +1,1 @@
-Team members: Amogh Ameya Ary Sudeeksha
+Team members: Amogh, Ameya, Ary, Sudeeksha
