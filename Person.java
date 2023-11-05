@@ -26,15 +26,16 @@ public class Person {
         this.monthlyMortgagePayment = monthlyMortgagePayment;
         this.creditScore = creditScore;
         this.buyHouse = true;
+        this.whatToDo = "";
 
     }
-    private boolean checkLoanToValue(){
+    private boolean checkLoanToValue() {
         float result = (float) ((downPayment*1.0)/appraisedValue);
-        if (result < .8){
+        if (result < .8) {
             return true;
         }
         else {
-            whatToDo = whatToDo + "increase down payment\n";
+            whatToDo = whatToDo + " increase down payment\n";
             buyHouse = false;
             return false;
         }
@@ -47,6 +48,11 @@ public class Person {
         if (0.28 < mortgageDTI) {
             buyHouse = false;
             return false; // more than 28% of that debt is going towards servicing a mortgage
+        }
+        if (cdiRatio <= 0.36) {
+            buyHouse = false;
+            whatToDo = whatToDo + "increase down payment\n";
+            return false;
         }
         return cdiRatio <= 0.36;
     }
