@@ -29,10 +29,10 @@ public class Person {
         this.creditScore = creditScore;
         this.buyHouse = true;
         this.whatToDo = "";
+        this.denialReason = new boolean[]{false,false,false,false};
         this.checkDebtToIncomeRatio();
         this.checkLoanToValue();
         this.checkFrontEndDebtToIncome();
-        this.denialReason = new boolean[]{false,false,false,false};
     }
 
     private void checkLoanToValue() {
@@ -79,6 +79,7 @@ public class Person {
         if (creditScore < 640) {
             denialReason[3] = true;
             buyHouse = false;
+            return;
         }
     }
 }
