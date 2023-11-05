@@ -52,9 +52,9 @@ public class Person {
         float mortgageDTI = (float) (monthlyMortgagePayment) / monthlyIncome;
         if (0.28 < mortgageDTI) {
             buyHouse = false;
-            denialReason[5] = true;
+            denialReason[4] = true;
             whatToDo = whatToDo + "look for lower price house.\n";
-            return mortgageDTI; // more than 28% of that debt is going towards servicing a mortgage
+            return; // more than 28% of that debt is going towards servicing a mortgage
         }
         if (cdiRatio > 0.36) {
             buyHouse = false;
@@ -79,6 +79,7 @@ public class Person {
         if (creditScore < 640) {
             denialReason[3] = true;
             buyHouse = false;
+            whatToDo = whatToDo + "raise credit score\n";
             return;
         }
     }

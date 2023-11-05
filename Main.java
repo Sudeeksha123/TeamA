@@ -5,9 +5,6 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Please enter a file name");
-        Scanner scnr = new Scanner(System.in);
-        String fileName = scnr.nextLine();
         Scanner file = null;
         float numBuy = 0;
         float numNoBuyLVT = 0;
@@ -17,7 +14,7 @@ public class Main {
         float numNoBuyMortgagePortionHigh = 0;
         float numCustomers = 0;
         try {
-            file = new Scanner(new File(fileName));
+            file = new Scanner(new File("HackUTD-2023-HomeBuyerInfo.txt"));
             file.nextLine();
             HashMap<Integer, Person> homeOwnerMap = new HashMap<>();
             while (file.hasNext()) {
@@ -61,7 +58,5 @@ public class Main {
             System.out.println("File not found");
 
         }
-        System.out.println("" + numNoBuyCreditScore);
-
     }
 }
