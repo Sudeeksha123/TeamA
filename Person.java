@@ -30,6 +30,7 @@ public class Person {
         this.buyHouse = true;
         this.whatToDo = "";
         this.denialReason = new boolean[]{false,false,false,false};
+        this.checkCreditScore();
         this.checkDebtToIncomeRatio();
         this.checkLoanToValue();
         this.checkFrontEndDebtToIncome();
