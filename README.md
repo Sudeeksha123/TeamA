@@ -10,3 +10,4 @@ Things to do:
      Ameya: DTI (Done)
      Ary: FEDTI (Done)
   7. Create output file function in main
+  8. Create GUI 
