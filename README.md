@@ -1,4 +1,4 @@
-Team members: Amogh, Ameya, Ary, Sudeeksha
+Team members: Amogh, Ameya, Ary, Sudeeksha  
 Things to do: 
   1. Create function in Person.java class for the 3 components. (Done)
   2. Make sure that the String variable is updated whenever the buyHouse variable is set to false;
