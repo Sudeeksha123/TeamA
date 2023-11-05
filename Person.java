@@ -39,7 +39,7 @@ public class Person {
     private void checkLoanToValue() {
         float result = 1 - (float) ((downPayment * 1.0) / appraisedValue);
         if (result >= .8) {
-            whatToDo = whatToDo + "increase down payment\n";
+            whatToDo = whatToDo + "Increase down payment. ";
             buyHouse = false;
             denialReason[0] = true;
             return;
@@ -53,13 +53,13 @@ public class Person {
         if (0.28 < mortgageDTI) {
             buyHouse = false;
             denialReason[4] = true;
-            whatToDo = whatToDo + "look for lower price house.\n";
+            whatToDo = whatToDo + "Look for lower price house. ";
             return; // more than 28% of that debt is going towards servicing a mortgage
         }
         if (cdiRatio > 0.36) {
             buyHouse = false;
             denialReason[1] = true;
-            whatToDo = whatToDo + "pay off loans\n";
+            whatToDo = whatToDo + "Pay off loans. ";
             return;
         }
         return;
@@ -69,7 +69,7 @@ public class Person {
         float fedtiRatio = (float) (monthlyMortgagePayment) / monthlyIncome;
         if (fedtiRatio > 0.28) {
             denialReason[2] = true;
-            whatToDo = whatToDo + "refinance mortgage\n";
+            whatToDo = whatToDo + "Refinance mortgage. ";
             buyHouse = false;
             return;
         }
@@ -79,7 +79,7 @@ public class Person {
         if (creditScore < 640) {
             denialReason[3] = true;
             buyHouse = false;
-            whatToDo = whatToDo + "raise credit score\n";
+            whatToDo = whatToDo + "Raise credit score. ";
             return;
         }
     }

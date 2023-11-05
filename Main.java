@@ -1,5 +1,7 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -17,6 +19,7 @@ public class Main {
             file = new Scanner(new File("HackUTD-2023-HomeBuyerInfo.txt"));
             file.nextLine();
             HashMap<Integer, Person> homeOwnerMap = new HashMap<>();
+            PrintWriter write = new PrintWriter("output.txt");
             while (file.hasNext()) {
                 numCustomers++;
                 int id = file.nextInt();
@@ -50,13 +53,26 @@ public class Main {
                         numNoBuyMortgagePortionHigh++;
                     }
                 }
+                write.print("Customer ID number: ");
+                write.println(id);
+                if(homeOwner.buyHouse){
+                    write.println("This customer is ready to buy a home");
+                }
+                else {
+                    write.println("This customer is not ready to buy a home.");
+                }
+                write.print("Reasons: ");
+                write.println(homeOwner.whatToDo);
+                write.println("---------------------------------");
                 if (file.hasNextLine()) {
                     file.nextLine();
                 }
             }
+            write.close();
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
 
         }
+
     }
 }
