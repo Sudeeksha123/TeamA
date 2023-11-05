@@ -60,9 +60,9 @@ public class Main {
                 }
                 else {
                     write.println("This customer is not ready to buy a home.");
+                    write.print("Suggestions for Improvement: ");
+                    write.println(homeOwner.whatToDo);
                 }
-                write.print("Reasons: ");
-                write.println(homeOwner.whatToDo);
                 write.println("---------------------------------");
                 if (file.hasNextLine()) {
                     file.nextLine();
