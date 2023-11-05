@@ -1,4 +1,7 @@
 public class Person {
+    public boolean buyHouse;
+    public String whatToDo;
+    public boolean[] denialReason = new boolean[4];
     private int creditScore;
     private int monthlyIncome;
     private int creditCardPayment;
@@ -8,14 +11,13 @@ public class Person {
     private float monthlyMortgagePayment;
     private int carPayment;
     private float downPayment;
-    public boolean buyHouse;
-    public String whatToDo;
 
 
     public Person() {
 
     }
-    public Person(int monthlyIncome, int creditCardPayment, int carPayment, int studentLoanPayment, int appraisedValue, float downPayment, float loanAmount, float monthlyMortgagePayment, int creditScore){
+
+    public Person(int monthlyIncome, int creditCardPayment, int carPayment, int studentLoanPayment, int appraisedValue, float downPayment, float loanAmount, float monthlyMortgagePayment, int creditScore) {
         this.monthlyIncome = monthlyIncome;
         this.creditCardPayment = creditCardPayment;
         this.carPayment = carPayment;
@@ -27,38 +29,56 @@ public class Person {
         this.creditScore = creditScore;
         this.buyHouse = true;
         this.whatToDo = "";
-
+        this.checkDebtToIncomeRatio();
+        this.checkLoanToValue();
+        this.checkFrontEndDebtToIncome();
+        this.denialReason = new boolean[]{false};
     }
-    private boolean checkLoanToValue() {
-        float result = (float) ((downPayment*1.0)/appraisedValue);
+
+    private void checkLoanToValue() {
+        float result = 1 - (float) ((downPayment * 1.0) / appraisedValue);
         if (result < .8) {
-            return true;
-        }
-        else {
-            whatToDo = whatToDo + " increase down payment\n";
+            return;
+        } else {
+            whatToDo = whatToDo + "increase down payment\n";
             buyHouse = false;
-            return false;
+            denialReason[0] = true;
+            return;
         }
     }
 
-    private boolean checkDebtToIncomeRatio() {
-        float debt = carPayment + creditCardPayment + monthlyMortgagePayment;
+    private void checkDebtToIncomeRatio() {
+        float debt = carPayment + creditCardPayment + monthlyMortgagePayment + studentLoanPayment;
         float cdiRatio = (float) (debt) / monthlyIncome;
         float mortgageDTI = (float) (monthlyMortgagePayment) / monthlyIncome;
         if (0.28 < mortgageDTI) {
             buyHouse = false;
-            return false; // more than 28% of that debt is going towards servicing a mortgage
+            denialReason[1] = true;
+            return; // more than 28% of that debt is going towards servicing a mortgage
         }
-        if (cdiRatio <= 0.36) {
+        if (cdiRatio > 0.36) {
             buyHouse = false;
-            whatToDo = whatToDo + "increase down payment\n";
-            return false;
+            denialReason[1] = true;
+            whatToDo = whatToDo + "pay off loans\n";
+            return;
         }
-        return cdiRatio <= 0.36;
+        return;
     }
 
-    private boolean checkFrontEndDebtToIncome() {
+    private void checkFrontEndDebtToIncome() {
         float fedtiRatio = (float) (monthlyMortgagePayment) / monthlyIncome;
-        return fedtiRatio <= 0.28;
+        if (fedtiRatio > 28) {
+            denialReason[2] = true;
+            whatToDo = whatToDo + "refinance mortgage\n";
+            buyHouse = false;
+            return;
+        }
+    }
+
+    private void checkCreditScore() {
+        if (creditScore < 640) {
+            denialReason[3] = true;
+            buyHouse = false;
+        }
     }
 }
