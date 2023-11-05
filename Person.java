@@ -32,7 +32,7 @@ public class Person {
         this.checkDebtToIncomeRatio();
         this.checkLoanToValue();
         this.checkFrontEndDebtToIncome();
-        this.denialReason = new boolean[]{false};
+        this.denialReason = new boolean[]{false,false,false,false};
     }
 
     private void checkLoanToValue() {

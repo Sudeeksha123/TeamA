@@ -33,7 +33,6 @@ public class Main {
                 int creditScore = file.nextInt();
                 Person homeOwner = new Person(monthlyIncome, creditCardPayment, carPayment, studentLoanPayments, appraisedValue, downPayment, loanPayment, monthlyMortgagePayment, creditScore);
                 homeOwnerMap.put(id, homeOwner);
-
                 if (homeOwner.buyHouse) {
                     numBuy++;
                 } else {
@@ -58,7 +57,7 @@ public class Main {
             System.out.println("File not found");
 
         }
-
+        System.out.println("" + numNoBuyCreditScore);
 
     }
 }
