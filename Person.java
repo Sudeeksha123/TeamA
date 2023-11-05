@@ -9,6 +9,7 @@ public class Person {
     private int carPayment;
     private int downPayment;
     private boolean buyHouse;
+    public String whatToDo;
 
     public Person() {
 
@@ -24,6 +25,17 @@ public class Person {
         this.monthlyMortgagePayment = monthlyMortgagePayment;
         this.creditScore = creditScore;
         this.buyHouse = false;
+
+    }
+    private boolean checkLoanToValue(){
+        float result = (float) ((downPayment*1.0)/appraisedValue);
+        if (result < .8){
+            return true;
+        }
+        else {
+            whatToDo = whatToDo + "increase down payment\n";
+            return false;
+        }
     }
 
     private boolean checkDebtToIncomeRatio() {
