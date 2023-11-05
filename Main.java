@@ -14,6 +14,7 @@ public class Main {
         float numNoBuyDTI = 0;
         float numNoBuyFEDTI = 0;
         float numNoBuyCreditScore = 0;
+        float numNoBuyMortgagePortionHigh = 0;
         float numCustomers = 0;
         try {
             file = new Scanner(new File(fileName));
@@ -47,6 +48,9 @@ public class Main {
                     }
                     if (homeOwner.denialReason[3]) {
                         numNoBuyCreditScore++;
+                    }
+                    if (homeOwner.denialReason[4]) {
+                        numNoBuyMortgagePortionHigh++;
                     }
                 }
                 if (file.hasNextLine()) {
