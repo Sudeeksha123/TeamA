@@ -4,10 +4,10 @@ public class Person {
     private int creditCardPayment;
     private int studentLoanPayment;
     private int appraisedValue;
-    private int loanAmount;
-    private int monthlyMortgagePayment;
+    private float loanAmount;
+    private float monthlyMortgagePayment;
     private int carPayment;
-    private int downPayment;
+    private float downPayment;
     public boolean buyHouse;
     public String whatToDo;
 
@@ -15,7 +15,7 @@ public class Person {
     public Person() {
 
     }
-    public Person(int monthlyIncome, int creditCardPayment, int carPayment, int studentLoanPayment, int appraisedValue, int downPayment, int loanAmount, int monthlyMortgagePayment, int creditScore){
+    public Person(int monthlyIncome, int creditCardPayment, int carPayment, int studentLoanPayment, int appraisedValue, float downPayment, float loanAmount, float monthlyMortgagePayment, int creditScore){
         this.monthlyIncome = monthlyIncome;
         this.creditCardPayment = creditCardPayment;
         this.carPayment = carPayment;
