@@ -1,7 +1,7 @@
 public class Person {
     public boolean buyHouse;
     public String whatToDo;
-    public boolean[] denialReason = new boolean[4];
+    public boolean[] denialReason = new boolean[5];
     private int creditScore;
     private int monthlyIncome;
     private int creditCardPayment;
@@ -29,7 +29,7 @@ public class Person {
         this.creditScore = creditScore;
         this.buyHouse = true;
         this.whatToDo = "";
-        this.denialReason = new boolean[]{false,false,false,false};
+        this.denialReason = new boolean[]{false, false, false, false, false};
         this.checkCreditScore();
         this.checkDebtToIncomeRatio();
         this.checkLoanToValue();
@@ -52,8 +52,9 @@ public class Person {
         float mortgageDTI = (float) (monthlyMortgagePayment) / monthlyIncome;
         if (0.28 < mortgageDTI) {
             buyHouse = false;
-            denialReason[1] = true;
-            return; // more than 28% of that debt is going towards servicing a mortgage
+            denialReason[5] = true;
+            whatToDo = whatToDo + "look for lower price house.\n";
+            return mortgageDTI; // more than 28% of that debt is going towards servicing a mortgage
         }
         if (cdiRatio > 0.36) {
             buyHouse = false;
@@ -66,7 +67,7 @@ public class Person {
 
     private void checkFrontEndDebtToIncome() {
         float fedtiRatio = (float) (monthlyMortgagePayment) / monthlyIncome;
-        if (fedtiRatio > 28) {
+        if (fedtiRatio > 0.28) {
             denialReason[2] = true;
             whatToDo = whatToDo + "refinance mortgage\n";
             buyHouse = false;
