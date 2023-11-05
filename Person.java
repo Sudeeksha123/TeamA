@@ -8,8 +8,9 @@ public class Person {
     private int monthlyMortgagePayment;
     private int carPayment;
     private int downPayment;
-    private boolean buyHouse;
+    public boolean buyHouse;
     public String whatToDo;
+
 
     public Person() {
 
@@ -24,7 +25,7 @@ public class Person {
         this.loanAmount = loanAmount;
         this.monthlyMortgagePayment = monthlyMortgagePayment;
         this.creditScore = creditScore;
-        this.buyHouse = false;
+        this.buyHouse = true;
 
     }
     private boolean checkLoanToValue(){
@@ -34,6 +35,7 @@ public class Person {
         }
         else {
             whatToDo = whatToDo + "increase down payment\n";
+            buyHouse = false;
             return false;
         }
     }
@@ -43,6 +45,7 @@ public class Person {
         float cdiRatio = (float) (debt) / monthlyIncome;
         float mortgageDTI = (float) (monthlyMortgagePayment) / monthlyIncome;
         if (0.28 < mortgageDTI) {
+            buyHouse = false;
             return false; // more than 28% of that debt is going towards servicing a mortgage
         }
         return cdiRatio <= 0.36;
