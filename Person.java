@@ -38,9 +38,7 @@ public class Person {
 
     private void checkLoanToValue() {
         float result = 1 - (float) ((downPayment * 1.0) / appraisedValue);
-        if (result < .8) {
-            return;
-        } else {
+        if (result >= .8) {
             whatToDo = whatToDo + "increase down payment\n";
             buyHouse = false;
             denialReason[0] = true;
